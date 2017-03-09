@@ -1,6 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a(href='/') home
+    #page-wrapper
+        br
+        .row
+            .col-lg-6.col-md-6.col-sm-12.col-xs-12
+                .panel.panel-default
+                    .panel-heading Form Tambah Data
+                    .panel-body
+                        form(action="tes/input" method="POST" role="form")
+                            .form-group
+                                label NIM
+                                input.form-control(type="text" placeholder="Masukkan NIM" name="nim")
+                            .form-group
+                                label Nama
+                                input.form-control(type="text" placeholder="Masukkan Nama" name="nama")
+                            .form-group
+                                label Alamat
+                                textarea.form-control(type="text" placeholder="Masukkan Alamat" name="alamat" rows="3")
+                            .form-group
+                                input.btn.btn-warning.pull-left(type="reset" value="Reset")
+                                input.btn.btn-info.pull-right(type="submit" value="Tambah")
+
