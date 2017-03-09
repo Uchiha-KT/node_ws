@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var http = require('http');
+var mysql = require('mysql');
 
 //atur ruting
 var index = require('./routes/index');
@@ -11,6 +13,7 @@ var users = require('./routes/users');
 var tes = require('./routes/tes');
 
 var app = express();
+var connection  = require('express-myconnection');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +26,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(
+    connection(mysql,{
+
+        host: 'localhost',
+        user: 'root',
+        password : '',
+        port : 3306, //port mysql
+        database:'node_js'
+    },'request')
+);
 
 //file yang digunakan
 app.use('/', index);
@@ -46,5 +60,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//3306
 
 module.exports = app;

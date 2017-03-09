@@ -20,17 +20,11 @@ block content
                     th Nama
                     th(width="200px") Aksi
                 tbody
-                  tr
-                    td 1608107010053
-                    td Riki Agusnaidi
-                    td.text-center
-                        p <a href="tes/detail" class="btn btn-success btn-xs">Detail</a>
-                          <a href="tes/edit" class="btn btn-warning btn-xs">Edit</a>
-                          <a href="tes/hapus" class="btn btn-danger btn-xs">Hapus</a>
-                  tr
-                    td 1608107010053
-                    td Riki Agusnaidi
-                    td.text-center
-                        p <a href="tes/detail" class="btn btn-success btn-xs">Detail</a>
-                          <a href="tes/edit" class="btn btn-warning btn-xs">Edit</a>
-                          <a href="tes/hapus" class="btn btn-danger btn-xs">Hapus</a>
+                  for row, index in data
+                    tr
+                      td #{row.nim}
+                      td #{row.nama}
+                      td.text-center
+                        p <a href="tes/detail/#{row.nim}" class="btn btn-success btn-xs">Detail</a>
+                          <a href="tes/edit/#{row.nim}" class="btn btn-warning btn-xs">Edit</a>
+                          <a href="tes/hapus/#{row.nim}" class="btn btn-danger btn-xs">Hapus</a>
